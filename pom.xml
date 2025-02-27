@@ -23,7 +23,10 @@
 		<sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
 		<sonar.jacoco.reportPath>${project.basedir}/../target/jacoco.exec</sonar.jacoco.reportPath>
 		<sonar.language>java</sonar.language>
-	</properties>
+    <sonar.projectKey>my-spring-boot-app</sonar.projectKey>
+    <sonar.host.url>http://34.87.243.235:9000</sonar.host.url>
+    <sonar.token>squ_5a074839368400c698a528bd494435004bc40573</sonar.token>
+</properties>
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -56,6 +59,11 @@
 				<artifactId>sonar-maven-plugin</artifactId>
 				<version>3.7.0.1746</version>
 			</plugin>
+			<plugin>
+            <groupId>org.sonarsource.scanner.maven</groupId>
+            <artifactId>sonar-maven-plugin</artifactId>
+            <version>3.9.1.2184</version>
+        </plugin>
 
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>

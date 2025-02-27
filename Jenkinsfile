@@ -6,6 +6,8 @@ pipeline {
     environment {
         SONAR_URL = 'http://34.87.243.235:9000'
         SONAR_TOKEN = credentials('sonar-token')  // Add this in Jenkins credentials
+        IMAGE_NAME = "myapp"
+        IMAGE_TAG = "latest"
     }
     stages {
         stage('Clone Repository') {
@@ -28,5 +30,17 @@ pipeline {
                 '''
             }
         }
+        stage('Build Docker Image') {
+            steps {
+                sh 'docker build -t ${IMAGE_NAME}:${IMAGE_TAG} .'
+            }
+        }
+
+        stage('Run Docker Container') {
+            steps {
+                sh 'docker run -d -p 8089:8089 --name myapp_container ${IMAGE_NAME}:${IMAGE_TAG}'
+            }
+        }
+    }
     }
 }

@@ -42,5 +42,13 @@ pipeline {
             }
         }
     }
+    post {
+        success {
+            echo "Application successfully deployed in a Docker container!"
+        }
+        failure {
+            echo "Build failed!"
+        }
+    }
     }
 }
